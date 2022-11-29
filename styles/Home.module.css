@@ -1,17 +1,37 @@
-.container {
+/* .container {
   padding: 0 2rem;
-}
+} */
 
 .main {
-  min-height: 100vh;
-  padding: 4rem 0;
-  flex: 1;
-  display: flex;
+  /* padding: 4rem 0; */
+  /* flex: 1; */
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
+scroll-snap-type: y mandatory;
+/* -webkit-scroll-snap-type: y mandatory; */
+overflow-y: auto;
+/* height: 100vh; */
+}
+.main{
+  height:100vh;
+}
+.item{
+  scroll-snap-align: center;
+  /* background-color: blue; */
+  width:500px;
+  height:760px;
+  
+  
+}
+.item:nth-child(odd) {
+  background-color: red;
 }
 
+.item:nth-child(even) {
+  background-color: green;
+}
 .footer {
   display: flex;
   flex: 1;

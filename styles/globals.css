@@ -5,7 +5,13 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
-
+body {
+  background-color: burlywood;
+  /* height          : 100vh; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 a {
   color: inherit;
   text-decoration: none;
@@ -13,14 +19,15 @@ a {
 
 * {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 @media (prefers-color-scheme: dark) {
-  html {
+  /* html {
     color-scheme: dark;
   }
   body {
     color: white;
     background: black;
-  }
+  } */
 }
