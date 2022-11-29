@@ -18,12 +18,17 @@ overflow-y: auto;
   height:100vh;
 }
 .item{
-  scroll-snap-align: center;
+  scroll-snap-align: start;
   /* background-color: blue; */
   width:500px;
   height:760px;
   
   
+}
+@media only screen and (max-width: 600px) {
+  .item{
+    scroll-snap-align: center;
+  }
 }
 .item:nth-child(odd) {
   background-color: red;
