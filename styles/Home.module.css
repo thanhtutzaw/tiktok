@@ -15,13 +15,13 @@ overflow-y: auto;
 /* height: 100vh; */
 }
 .main{
-  min-height:100vh;
+  height:100vh;
 }
 .item{
   scroll-snap-align: start;
   /* background-color: blue; */
   width:500px;
-  height:100vh;
+  min-height:100vh;
   
   
 }
