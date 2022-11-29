@@ -15,7 +15,7 @@ overflow-y: auto;
 /* height: 100vh; */
 }
 .main{
-  height:100vh;
+  min-height:100vh;
 }
 .item{
   scroll-snap-align: start;
