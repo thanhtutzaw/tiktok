@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+// import video from '../public/1.mp4'
 
 export default function Home() {
   return (
@@ -12,10 +13,18 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <div className={styles.item}></div>
-        <div className={styles.item}></div>
-        <div className={styles.item}></div>
-        <div className={styles.item}></div>
+        <video style={{minHeight:'100vh'}} className={styles.item} controls autoPlay={true}>
+          <source src="/1.mp4" type="video/mp4" />
+        </video>
+        <video style={{minHeight:'100vh'}} className={styles.item} controls autoPlay={true}>
+          <source src="/2.mp4" type="video/mp4" />
+        </video>
+        <video style={{minHeight:'100vh'}} className={styles.item} controls autoPlay={true}>
+          <source src="/3.mp4" type="video/mp4" />
+        </video>
+        <video style={{minHeight:'100vh'}} className={styles.item} controls autoPlay={true}>
+          <source src="/4.mp4" type="video/mp4" />
+        </video>
       </main>
     </>
   );
