@@ -19,8 +19,9 @@ a {
 
 * {
   box-sizing: border-box;
-  /* scroll-behavior: smooth; */
+  
 }
+
 
 @media (prefers-color-scheme: dark) {
   /* html {

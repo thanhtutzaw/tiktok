@@ -21,7 +21,7 @@ overflow-y: auto;
   scroll-snap-align: start;
   /* background-color: blue; */
   width:500px;
-  height:760px;
+  min-height:100vh;
   
   
 }
