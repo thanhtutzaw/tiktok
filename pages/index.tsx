@@ -23,7 +23,8 @@ const Video = ({ isplaying , src}:any) => {
 
 export default function Home() {
   const [isplaying, setisplaying] = useState(false);
-  function togglePlay(e: MouseEvent<HTMLVideoElement, MouseEvent>) {
+
+  function togglePlay(e: MouseEvent<HTMLVideoElement>) {
     const target = e.target as HTMLVideoElement;
     // console.log(target.play())
     setisplaying((prev) => !prev);
@@ -42,9 +43,7 @@ export default function Home() {
 
       <main
         className={styles.main}
-        onClick={(e) => {
-          togglePlay(e);
-        }}
+        onClick={togglePlay}
       >
         <Video src={"1.mp4"} isplaying={isplaying} />
         <Video src={"2.mp4"} isplaying={isplaying} />
