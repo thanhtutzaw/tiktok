@@ -1,9 +1,37 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import { MouseEvent, useState } from "react";
+import styles from "../styles/Home.module.css";
 // import video from '../public/1.mp4'
 
+const Video = ({ isplaying , src}:any) => {
+  return (
+    <div className={styles.videoContainer}>
+      <div className={styles.playState}>{isplaying ? <span>pause</span> : <span>play</span>}</div>
+      <video
+        style={{
+          minHeight: "100vh",
+        }}
+        className={styles.item}
+        autoPlay={true}
+      >
+        <source src={src} type="video/mp4" />
+      </video>
+    </div>
+  );
+};
+
 export default function Home() {
+  const [isplaying, setisplaying] = useState(false);
+  function togglePlay(e: MouseEvent<HTMLVideoElement, MouseEvent>) {
+    const target = e.target as HTMLVideoElement;
+    // console.log(target.play())
+    setisplaying((prev) => !prev);
+    target.play();
+    if (isplaying === true) {
+      target.pause();
+    }
+  }
   return (
     <>
       <Head>
@@ -12,19 +40,18 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <video style={{minHeight:'100vh'}} className={styles.item} controls autoPlay={true}>
-          <source src="/1.mp4" type="video/mp4" />
-        </video>
-        <video style={{minHeight:'100vh'}} className={styles.item} controls autoPlay={true}>
-          <source src="/2.mp4" type="video/mp4" />
-        </video>
-        <video style={{minHeight:'100vh'}} className={styles.item} controls autoPlay={true}>
-          <source src="/3.mp4" type="video/mp4" />
-        </video>
-        <video style={{minHeight:'100vh'}} className={styles.item} controls autoPlay={true}>
-          <source src="/4.mp4" type="video/mp4" />
-        </video>
+      <main
+        className={styles.main}
+        onClick={(e) => {
+          togglePlay(e);
+        }}
+      >
+        <Video src={"1.mp4"} isplaying={isplaying} />
+        <Video src={"2.mp4"} isplaying={isplaying} />
+        <Video src={"3.mp4"} isplaying={isplaying} />
+        <Video src={"4.mp4"} isplaying={isplaying} />
+
+      
       </main>
     </>
   );
