@@ -6,7 +6,8 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 body {
-  background-color: burlywood;
+  /* background-color: burlywood; */
+  background-color: rgb(233, 233, 233);
   /* height          : 100vh; */
   display: flex;
   justify-content: center;
@@ -22,7 +23,11 @@ a {
   
 }
 
-
+@media only screen and (max-width: 600px) {
+  body{
+    background-color: black;
+  }
+}
 @media (prefers-color-scheme: dark) {
   /* html {
     color-scheme: dark;
@@ -41,15 +46,15 @@ a {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #d1d1d194;
 }
 
 ::-webkit-scrollbar-thumb {
-  background   : #888;
+  background   : rgba(255, 255, 255, 0.836);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
 
-  background: #555;
+  background: rgb(168, 168, 168);
 }

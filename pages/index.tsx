@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import { MouseEvent, useState } from "react";
+import { MouseEvent, useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 // import video from '../public/1.mp4'
 
@@ -19,9 +19,6 @@ const Video = ({ isplaying , src}:any) => {
         </div>
       )}
       <video
-        style={{
-          minHeight: "100vh",
-        }}
         className={styles.item}
         // autoPlay={true}
       >
@@ -43,6 +40,18 @@ export default function Home() {
       target.pause();
     }
   }
+  useEffect(() => {
+    // let videos = document.getElementsByClassName(
+    //   "item"
+    // ) as HTMLCollectionOf<HTMLDivElement>;
+    // Array.from(videos).forEach((item) => {
+    //   console.log(item);
+    // });
+    let videos = document.getElementsByTagName("video") as HTMLCollectionOf<HTMLVideoElement>
+    Array.from(videos).forEach((item) => console.log(item));
+  }, [])
+  
+
   return (
     <>
       <Head>
@@ -58,9 +67,7 @@ export default function Home() {
         <Video src={"1.mp4"} isplaying={isplaying} />
         <Video src={"2.mp4"} isplaying={isplaying} />
         <Video src={"3.mp4"} isplaying={isplaying} />
-        <Video src={"4.mp4"} isplaying={isplaying} />
-
-      
+        <Video src={"4.mp4"} isplaying={isplaying} />      
       </main>
     </>
   );
