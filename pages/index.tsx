@@ -4,16 +4,26 @@ import { MouseEvent, useState } from "react";
 import styles from "../styles/Home.module.css";
 // import video from '../public/1.mp4'
 
+
 const Video = ({ isplaying , src}:any) => {
   return (
     <div className={styles.videoContainer}>
-      <div className={styles.playState}>{isplaying ? <span>pause</span> : <span>play</span>}</div>
+      {isplaying ? null : (
+        <div className={styles.playState}>
+          <span>
+            <img
+              className={styles.playIcon}
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAAAxElEQVRIie3WMWpCURBG4Q8FSRrtbC2SPhvICmzchVuwtXQLbsE2pVUIkjqQHVgqNmIj6EvxGHhFQAIvcxt/OPVhhrlzh3sKZ4MvTLLFVYNPvJYQB294LiGucMYSw2xxcMQcj9niYIsputni4BvjEuJgjZcS4goXrDDKFgcnLDDIFgd7zNDLFgfvTUHnL23ISJuV7iS3Ooarn1VxkeeUvkDSV2b6J3FQT+pDW8Jb4vRD4Kqe1Kf/Ev4mTj32PhQ6b+9pPT+XHgysHrPM6QAAAABJRU5ErkJggg=="
+            />
+          </span>{" "}
+        </div>
+      )}
       <video
         style={{
           minHeight: "100vh",
         }}
         className={styles.item}
-        autoPlay={true}
+        // autoPlay={true}
       >
         <source src={src} type="video/mp4" />
       </video>
