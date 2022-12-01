@@ -12,13 +12,13 @@
   scroll-snap-type           : y mandatory;
   /* -webkit-scroll-snap-type: y mandatory; */
   overflow-y                 : scroll;
+  width:100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   /* height                  : 100vh; */
 }
-
-.main {
-  height: 100vh;
-}
-
 .videoContainer {
   /* display: flex;
   justify-content: center;
