@@ -91,7 +91,7 @@ setisplaying(false);
                     // console.table({ src: video.currentSrc });
                     // setisplaying(false);
                     // video.removeAttribute("autoplay");
-                    // video.removeAttribute('autoplay')
+                    video.removeAttribute('autoplay')
                     // video.style.opacity = '1'
                     // video.style.filter = "blur(20px)"
                     video.style.outline = "3px solid red";
@@ -103,7 +103,7 @@ setisplaying(false);
                     // video.muted=false;
                   } else if (entry.intersectionRatio != 2) {
                     console.log({ Playing: video.currentSrc });
-                    //  video.setAttribute("autoplay", "true");
+                     video.setAttribute("autoplay", "true");
                     // video.style.filter = "blur(0)";
                     video.style.outline = "0";
 
