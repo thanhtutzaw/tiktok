@@ -1,3 +1,3 @@
 ### Interception Observer
-### Video.load() instead pause
+### Video.load() , instead pausing
 ### Unmute
