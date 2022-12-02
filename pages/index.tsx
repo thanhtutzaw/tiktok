@@ -19,6 +19,7 @@ const Video = ({ setisplaying, isplaying , src , togglePlay}:any) => {
         </div>
       )}
       <video
+      muted={true}
       loop ={true}
         className={styles.item}
         onPlay={(e) => {
@@ -77,12 +78,12 @@ Array.from(videos).forEach((video) => {
                   // console.log(entry)
                   // video.currentTime = 0;
                   // video.pause();
-                  video.currentTime = 0;
+                  // video.currentTime = 0;
                   video.load()
+                  video.muted = true;
                   // video.load()
                   // console.table({ src: video.currentSrc });
                   // setisplaying(false);
-                  video.muted = true;
                   // video.removeAttribute("autoplay");
                   // video.removeAttribute('autoplay')
                   // video.style.opacity = '1'
@@ -125,6 +126,7 @@ Array.from(videos).forEach((video) => {
             // } , {rootMargin:'-390px'})
           observer.observe(video)
         })
+        .catch(err => console.log(err))
       }
       
     } );
