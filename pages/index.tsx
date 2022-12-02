@@ -6,7 +6,7 @@ import styles from "../styles/Home.module.css";
 
 const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
   return (
-    <div onClick={togglePlay} className={styles.videoContainer}>
+    <div  className={styles.videoContainer}>
       {isplaying ? (
         <div className={styles.playState}>
           <span>Playing</span>
