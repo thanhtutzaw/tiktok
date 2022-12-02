@@ -5,9 +5,9 @@ import styles from "../styles/Home.module.css";
 // import video from '../public/1.mp4'
 
 
-const Video = ({ isplaying , src}:any) => {
+const Video = ({ setisplaying, isplaying , src , togglePlay}:any) => {
   return (
-    <div className={styles.videoContainer}>
+    <div onClick={togglePlay} className={styles.videoContainer}>
       {isplaying ? null : (
         <div className={styles.playState}>
           <span>
@@ -15,11 +15,21 @@ const Video = ({ isplaying , src}:any) => {
               className={styles.playIcon}
               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAAAxElEQVRIie3WMWpCURBG4Q8FSRrtbC2SPhvICmzchVuwtXQLbsE2pVUIkjqQHVgqNmIj6EvxGHhFQAIvcxt/OPVhhrlzh3sKZ4MvTLLFVYNPvJYQB294LiGucMYSw2xxcMQcj9niYIsputni4BvjEuJgjZcS4goXrDDKFgcnLDDIFgd7zNDLFgfvTUHnL23ISJuV7iS3Ooarn1VxkeeUvkDSV2b6J3FQT+pDW8Jb4vRD4Kqe1Kf/Ev4mTj32PhQ6b+9pPT+XHgysHrPM6QAAAABJRU5ErkJggg=="
             />
-          </span>{" "}
+          </span>
         </div>
       )}
       <video
+      loop ={true}
         className={styles.item}
+        onPlay={(e) => {
+          setisplaying(true)
+            // e.target.muted = false;
+          // setisplaying(true);
+        }}
+        onPause={() => {
+          // setisplaying(false)
+          // setisplaying((prev: any) => !prev);
+        }}
         // autoPlay={true}
       >
         <source src={src} type="video/mp4" />
@@ -36,8 +46,11 @@ export default function Home() {
     // console.log(target.play())
     setisplaying((prev) => !prev);
     target.play();
+    // target.muted = false;
     if (isplaying === true) {
+      // target.muted = false;
       target.pause();
+      // target.muted = true;
     }
   }
   useEffect(() => {
@@ -48,7 +61,58 @@ export default function Home() {
     //   console.log(item);
     // });
     let videos = document.getElementsByTagName("video") as HTMLCollectionOf<HTMLVideoElement>
-    Array.from(videos).forEach((item) => console.log(item));
+Array.from(videos).forEach((video) => {
+ 
+      video.muted = true;
+      let playPromise = video.play();
+
+      if(playPromise !== undefined){
+        playPromise.then( (_)=>{
+          let observer = new IntersectionObserver(
+            (entries) =>{
+              entries.forEach((entry) => {
+                if (!entry.isIntersecting && entry.intersectionRatio !== 2) {
+                  // if (!entry.isIntersecting) {
+                  // setisplaying(false);
+                  // console.log(entry)
+                  // video.currentTime = 0;
+                  // video.pause();
+                  video.currentTime = 0;
+                  // console.table({ src: video.currentSrc });
+                  // setisplaying(false);
+                  video.muted = true;
+                } else if (entry.intersectionRatio === 2 && video.played) {
+                  // video.currentTime = 0;
+                  // // video.load()
+                  // // video.play()
+                  // video.muted=false;
+                } else {
+                  console.log({ Playing: video.currentSrc });
+                  // video.load();
+                  // video.currentTime = 0
+                  // video.load();
+                  video.muted = false;
+                  video.play();
+                  setisplaying(true)
+
+                  // video.currentTime
+                  // if (video.paused) {
+                  //   video.currentTime = 0;
+                  //   video.load();
+                  // }
+                  // video.muted=false;
+                  // video.muted = false;
+                  // setisplaying(true);
+                }
+
+              })
+            } , {threshold:.2})
+          observer.observe(video)
+        })
+      }
+      
+    } );
+
   }, [])
   
 
@@ -62,12 +126,12 @@ export default function Home() {
 
       <main
         className={styles.main}
-        onClick={togglePlay}
+        
       >
-        <Video src={"1.mp4"} isplaying={isplaying} />
-        <Video src={"2.mp4"} isplaying={isplaying} />
-        <Video src={"3.mp4"} isplaying={isplaying} />
-        <Video src={"4.mp4"} isplaying={isplaying} />      
+        <Video setisplaying={setisplaying} togglePlay={togglePlay} src={"1.mp4"} isplaying={isplaying} />
+        <Video setisplaying={setisplaying} togglePlay={togglePlay} src={"2.mp4"} isplaying={isplaying} />
+        <Video setisplaying={setisplaying} togglePlay={togglePlay} src={"3.mp4"} isplaying={isplaying} />
+        <Video setisplaying={setisplaying} togglePlay={togglePlay} src={"4.mp4"} isplaying={isplaying} />      
       </main>
     </>
   );
