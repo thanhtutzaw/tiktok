@@ -19,7 +19,6 @@ const Video = ({ setisplaying, isplaying , src , togglePlay}:any) => {
         </div>
       )}
       <video
-      autoPlay
       loop ={true}
         className={styles.item}
         onPlay={(e) => {
@@ -84,8 +83,11 @@ Array.from(videos).forEach((video) => {
                   // console.table({ src: video.currentSrc });
                   // setisplaying(false);
                   video.muted = true;
-                  video.removeAttribute("autoplay");
+                  // video.removeAttribute("autoplay");
                   // video.removeAttribute('autoplay')
+                  // video.style.opacity = '1'
+                  // video.style.filter = "blur(20px)"
+                  video.style.outline = "3px solid red"
                 } else if (entry.intersectionRatio === 2 && video.played) {
                   // video.pause()
                   // video.currentTime = 0;
@@ -94,7 +96,10 @@ Array.from(videos).forEach((video) => {
                   // video.muted=false;
                 } else if(entry.intersectionRatio != 2){
                   console.log({ Playing: video.currentSrc });
-                   video.setAttribute("autoplay", "true");
+                  //  video.setAttribute("autoplay", "true");
+                  // video.style.filter = "blur(0)";
+                  video.style.outline = "0"
+
 
                   // video.load();
                   // video.currentTime = 0
