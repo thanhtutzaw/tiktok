@@ -84,6 +84,8 @@ Array.from(videos).forEach((video) => {
                   // console.table({ src: video.currentSrc });
                   // setisplaying(false);
                   video.muted = true;
+                  video.removeAttribute("autoplay");
+                  // video.removeAttribute('autoplay')
                 } else if (entry.intersectionRatio === 2 && video.played) {
                   // video.pause()
                   // video.currentTime = 0;
@@ -92,6 +94,8 @@ Array.from(videos).forEach((video) => {
                   // video.muted=false;
                 } else if(entry.intersectionRatio != 2){
                   console.log({ Playing: video.currentSrc });
+                   video.setAttribute("autoplay", "true");
+
                   // video.load();
                   // video.currentTime = 0
                   // video.load();
