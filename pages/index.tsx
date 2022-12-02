@@ -89,7 +89,7 @@ Array.from(videos).forEach((video) => {
                   // // video.load()
                   // // video.play()
                   // video.muted=false;
-                } else {
+                } else if(entry.intersectionRatio != 2){
                   console.log({ Playing: video.currentSrc });
                   // video.load();
                   // video.currentTime = 0
@@ -111,7 +111,8 @@ Array.from(videos).forEach((video) => {
                 }
 
               })
-            } , {rootMargin:'-390px'})
+            } , {threshold:.49} )
+            // } , {rootMargin:'-390px'})
           observer.observe(video)
         })
       }
