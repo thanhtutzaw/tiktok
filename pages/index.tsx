@@ -72,7 +72,7 @@ export default function Home() {
             let observer = new IntersectionObserver(
               (entries) => {
                 entries.forEach((entry) => {
-                  if (!entry.isIntersecting && entry.intersectionRatio !== 2) {
+                  if (!entry.isIntersecting && entry.intersectionRatio !== 2 && video.played) {
                     // if (!entry.isIntersecting) {
                     // setisplaying(false);
                     // console.log(entry)
