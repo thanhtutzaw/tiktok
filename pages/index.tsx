@@ -78,10 +78,13 @@ Array.from(videos).forEach((video) => {
                   // video.currentTime = 0;
                   // video.pause();
                   video.currentTime = 0;
+                  video.load()
+                  // video.load()
                   // console.table({ src: video.currentSrc });
                   // setisplaying(false);
                   video.muted = true;
                 } else if (entry.intersectionRatio === 2 && video.played) {
+                  // video.pause()
                   // video.currentTime = 0;
                   // // video.load()
                   // // video.play()
@@ -91,8 +94,10 @@ Array.from(videos).forEach((video) => {
                   // video.load();
                   // video.currentTime = 0
                   // video.load();
+                  video.play()
                   video.muted = false;
-                  video.play();
+                  // video.currentTime = 0
+                  // video.load();
                   setisplaying(true)
 
                   // video.currentTime
@@ -106,7 +111,7 @@ Array.from(videos).forEach((video) => {
                 }
 
               })
-            } , {threshold:.2})
+            } , {rootMargin:'-390px'})
           observer.observe(video)
         })
       }
