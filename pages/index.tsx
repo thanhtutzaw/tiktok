@@ -19,6 +19,7 @@ const Video = ({ setisplaying, isplaying , src , togglePlay}:any) => {
         </div>
       )}
       <video
+      autoPlay
       loop ={true}
         className={styles.item}
         onPlay={(e) => {
@@ -63,9 +64,9 @@ export default function Home() {
     let videos = document.getElementsByTagName("video") as HTMLCollectionOf<HTMLVideoElement>
 Array.from(videos).forEach((video) => {
  
-      video.muted = true;
-      let playPromise = video.play();
-
+  let playPromise = video.play();
+  
+  video.muted = true;
       if(playPromise !== undefined){
         playPromise.then( (_)=>{
           let observer = new IntersectionObserver(
