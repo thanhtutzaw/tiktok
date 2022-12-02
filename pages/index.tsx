@@ -111,7 +111,7 @@ Array.from(videos).forEach((video) => {
                 }
 
               })
-            } , {threshold:.49} )
+            } , {root:document.body , threshold:.49} )
             // } , {rootMargin:'-390px'})
           observer.observe(video)
         })
