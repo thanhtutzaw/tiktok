@@ -45,7 +45,7 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
         video.play();
         // setisplaying(true);    /// here
         video.muted = false;
-        video.style.border = "3px solid red"
+        // video.style.border = "3px solid red"
 
         
       // }
@@ -57,7 +57,7 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
           
         //  if(!isplaying){
           if(!isVisibile){
-           video.style.border = "0";
+          //  video.style.border = "0";
             video.load();
             video.muted = true;
             console.log(video, video.currentSrc);
@@ -132,7 +132,7 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
         muted={true}
         // autoPlay={true}
         onClick={togglePlay2}
-        // loop={true}
+        loop={true}
         className={styles.item}
         // controls
         onPlay={(e) => {
