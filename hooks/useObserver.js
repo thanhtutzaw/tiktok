@@ -3,11 +3,11 @@ import { useEffect, useMemo, useState } from 'react'
 const useObserver = (options, targetRef) => {
     const [isVisibile, setIsVisible] = useState()
 
-    // const callbackFunction = entries => {
-    //     const [entry] = entries //const entry = entries[0]
-    //     // console.log(entry)
-    //     setIsVisible(entry.isIntersecting === true)
-    // }
+    const callbackFunction = entries => {
+        const [entry] = entries //const entry = entries[0]
+        // console.log(entry)
+        setIsVisible(entry.isIntersecting)
+    }
 
     const optionsMemo = useMemo(() => {
         return options
@@ -15,39 +15,65 @@ const useObserver = (options, targetRef) => {
 
     useEffect(() => {
         const currentTarget = targetRef.current
-        const playPromise = currentTarget.play()
-        
+        // const playPromise = currentTarget.play()
+        let observer = new IntersectionObserver(callbackFunction , optionsMemo)
         // currentTarget.muted = true;
         // if (!currentTarget) return;
-        if(playPromise != undefined){
-            // console.log(playPromise)
-            playPromise.then((_)=>{
-               let observer = new IntersectionObserver((entries) => {
-                    entries.forEach((entry) => {
-                        setIsVisible(entry.isIntersecting)
-                        if(entry.isIntersecting){
-                            // currentTarget.play()
-                        }
-                    })
-                }
+        
+        if (currentTarget) observer?.observe(currentTarget)
 
-                    , optionsMemo)
-                if (currentTarget) observer?.observe(currentTarget)
-            }).catch(err => {
-                // Autoplay was prevented.
-
-                // currentTarget.muted = true;
-                // currentTarget.play();
-            });
-            
-            // console.log(currentTarget.currentSrc)
-            
+        return () => {
+            if (currentTarget) observer?.unobserve(currentTarget)
         }
-
-        // return () => {
-        //     if (currentTarget) observer?.unobserve(currentTarget)
-        // }
     }, [targetRef, options])
+
+    // useEffect(() => {
+    //     const currentTarget = targetRef.current
+    //     const playPromise = currentTarget.play()
+        
+    //     // currentTarget.muted = true;
+    //     // if (!currentTarget) return;
+    //     if(playPromise != undefined){
+    //         // console.log(playPromise)
+    //         playPromise.then((_)=>{
+    //            let observer = new IntersectionObserver((entries) => {
+    //                 entries.forEach((entry) => {
+    //                     setIsVisible(entry.isIntersecting)
+    //                     if(entry.isIntersecting){
+    //                         // currentTarget.play()
+    //                     }
+    //                 })
+    //             }
+
+    //                 , optionsMemo)
+    //             if (currentTarget) observer?.observe(currentTarget)
+    //         }).catch(err => {
+    //             // currentTarget.removeAttribute('muted')
+    //             // let observer = new IntersectionObserver((entries) => {
+    //             //     entries.forEach((entry) => {
+    //             //         setIsVisible(entry.isIntersecting)
+    //             //         if (entry.isIntersecting) {
+    //             //             // currentTarget.play()
+    //             //         }
+    //             //     })
+    //             // }
+
+    //             // Autoplay was prevented.
+    //             // setIsVisible(entry.isIntersecting)
+                
+    //             // currentTarget.play();
+    //             // currentTarget.muted = true;
+    //         });
+            
+    //         // console.log(currentTarget.currentSrc)
+            
+    //     }
+    //     // observer?.observe(currentTarget)
+
+    //     // return () => {
+    //     //     if (currentTarget) observer?.unobserve(currentTarget)
+    //     // }
+    // }, [targetRef, options])
 
     return isVisibile
 }

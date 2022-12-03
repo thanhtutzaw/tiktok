@@ -21,12 +21,20 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
     // console.log(isVisibile);
     const video = videoRef?.current!;
     video.muted = true;
+    // video.play()
+    // setisplaying(true)
+
+    // if(!isplaying){
+    //   video.play()
+    //   video.muted = false;
+    // }
+
     // if (!isplaying) {
     //   video.pause();
     //   video.muted = true;
     // }
     // console.log(video?.);
-    if (isplaying) {
+    if (!isplaying) {
       // video.play();
       // video.muted = false;
     }
@@ -47,10 +55,14 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
         // if (isplaying) {
 
           
-          video.style.border = "0"
-          video.load();
-          video.muted =true;
-          console.log(video, video.currentSrc);
+        //  if(!isplaying){
+          if(!isVisibile){
+           video.style.border = "0";
+            video.load();
+            video.muted = true;
+            console.log(video, video.currentSrc);
+           }
+        //  }
           
           
         // setisplaying(false);
@@ -156,15 +168,22 @@ export default function Home() {
   }
 
   useEffect(() => {
-    if (isplaying === false) {
+    
+    
       const videoElement = document.getElementsByTagName(
         "video"
       ) as HTMLCollectionOf<HTMLVideoElement>;
       Array.from(videoElement).forEach((video) => {
-        video.pause()
-        console.log({pause:video});
+        if (isplaying === false) {
+          video.pause();
+          console.log({ pause: video });
+        } else {
+          console.log({else:video})
+          // video.play();
+        }
       });
-    }
+    
+    
   }, [isplaying])
   
 
