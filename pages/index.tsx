@@ -113,11 +113,7 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
   }
   return (
     <div className={styles.videoContainer}>
-      {isplaying ? (
-        <div className={styles.playState}>
-          <span>Playing</span>
-        </div>
-      ) : (
+      {isplaying ? null : (
         <div className={styles.playState}>
           <span>
             <img
