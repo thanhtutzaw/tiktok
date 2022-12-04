@@ -165,7 +165,7 @@ export default function Home() {
       "video"
     ) as HTMLCollectionOf<HTMLVideoElement>;
     Array.from(videoElement).forEach((video) => {
-      if (isplaying === false && video.played) {
+      if (isplaying === false) {
         video.pause();
         // console.log({ pause: video });
       } else {
