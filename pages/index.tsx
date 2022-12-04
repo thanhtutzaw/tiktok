@@ -46,8 +46,8 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
 
         video.play();
         // setisplaying(true);    /// here
-        video.muted = false;
         if(isplaying){
+          video.muted = false;
           video.setAttribute('autoplay','true')
         }
         console.log({ visible: video.currentSrc });
@@ -66,6 +66,7 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
           //  video.style.border = "0";
             video.load();
             video.muted = true;
+            video.removeAttribute("autoplay");
             // console.log(video, video.currentSrc);
            }
         //  }
