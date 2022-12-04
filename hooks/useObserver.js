@@ -25,7 +25,7 @@ const useObserver = (options, targetRef) => {
         const playPromise = currentTarget.play()
         if (playPromise != undefined){
             
-            playPromise.then(() => currentTarget.play() ).catch((err)=>{console.error();(err)})
+            playPromise.then().catch((err)=>{console.error();(err)})
         }
 
         return () => {
