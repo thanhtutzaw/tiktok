@@ -50,7 +50,7 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
         if(isplaying){
           video.setAttribute('autoplay','true')
         }
-        console.log(video.currentSrc);
+        console.log({ visible: video.currentSrc });
         // video.style.border = "3px solid red"
 
         
