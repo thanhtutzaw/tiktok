@@ -62,7 +62,7 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
           //  video.style.border = "0";
             video.load();
             video.muted = true;
-            console.log(video, video.currentSrc);
+            // console.log(video, video.currentSrc);
            }
         //  }
           
@@ -172,7 +172,7 @@ export default function Home() {
         "video"
       ) as HTMLCollectionOf<HTMLVideoElement>;
       Array.from(videoElement).forEach((video) => {
-        if (isplaying === false) {
+        if (isplaying === false && !video.played) {
           video.pause();
           // console.log({ pause: video });
         } else {
