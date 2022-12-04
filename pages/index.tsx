@@ -128,7 +128,8 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
           console.log("playing true (onPlayEvent)");
           const target = e.target as HTMLVideoElement;
           target.muted = false;
-          target.removeAttribute('muted')
+          // target.removeAttribute('muted')
+          
           // target.removeAttribute('muted') // here
           
           // target.play();
