@@ -20,9 +20,9 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
   useEffect(() => {
     // console.log(isVisibile);
     const video = videoRef?.current!;
-    // video.muted = true; // here
+    video.muted = true;
 
-
+    
     // video.play()
     // setisplaying(true)
 
@@ -128,6 +128,8 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
       <video
         ref={videoRef}
         muted={true}
+        playsInline 
+        autoPlay
         // autoPlay={true}
         onClick={togglePlay2}
         loop={true}

@@ -5,7 +5,6 @@ const useObserver = (options, targetRef) => {
 
     const callbackFunction = entries => {
         const [entry] = entries //const entry = entries[0]
-        // console.log(entry)
         setIsVisible(entry.isIntersecting)
     }
 
