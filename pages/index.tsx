@@ -57,11 +57,6 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
       // }
     } 
       else {
-      // if (!isplaying) {
-        // if (isplaying) {
-
-          
-        //  if(!isplaying){
           if(!isVisibile){
           //  video.style.border = "0";
             video.load();
@@ -69,11 +64,6 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
             video.removeAttribute("autoplay");
             // console.log(video, video.currentSrc);
            }
-        //  }
-          
-          
-        // setisplaying(false);
-      // }
     }
   }, [isVisibile , isplaying]);
 
@@ -140,6 +130,7 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
         // controls
         onPlay={(e) => {
           setisplaying(true)
+          console.log("on play event set isplaying true");
           // const target = e.target as HTMLVideoElement;
           // target.muted = false;
           // setisplaying(true);
