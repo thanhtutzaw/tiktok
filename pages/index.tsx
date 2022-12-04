@@ -168,10 +168,10 @@ export default function Home() {
       if (isplaying !== false) {
         video.pause();
         // console.log({ pause: video });
-      } else {
+      } 
         // console.log({else:video})
-        // video.play();
-      }
+        video.play();
+      
     });
   }, [isplaying]);
 
