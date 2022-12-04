@@ -20,7 +20,9 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
   useEffect(() => {
     // console.log(isVisibile);
     const video = videoRef?.current!;
-    video.muted = true;
+    // video.muted = true; // here
+
+
     // video.play()
     // setisplaying(true)
 
