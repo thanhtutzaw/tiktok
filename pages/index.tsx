@@ -7,12 +7,11 @@ import useObserver from "../hooks/useObserver";
 const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
   let options;
 
-    options = {
-      root: null,
-      rootMargin: "0px", 
-      threshold: .5,
-    };
-  
+  options = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.5,
+  };
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -22,7 +21,6 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
     const video = videoRef?.current!;
     video.muted = true;
 
-    
     // video.play()
     // setisplaying(true)
 
@@ -40,33 +38,30 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
       // video.play();
       // video.muted = false;
     }
-    
+
     if (isVisibile) {
       // if (!isplaying) {
 
-        video.play();
-        // setisplaying(true);    /// here
-        if(isplaying){
-          video.muted = false;
-          video.setAttribute('autoplay','true')
-        }
-        console.log({ visible: video.currentSrc });
-        // video.style.border = "3px solid red"
+      video.play();
+      // setisplaying(true);    /// here
+      if (isplaying) {
+        video.muted = false;
+        video.setAttribute("autoplay", "true");
+      }
+      console.log({ visible: video.currentSrc });
+      // video.style.border = "3px solid red"
 
-        
       // }
-    } 
-      else {
-          if(!isVisibile){
-          //  video.style.border = "0";
-            video.load();
-            video.muted = true;
-            video.removeAttribute("autoplay");
-            // console.log(video, video.currentSrc);
-           }
+    } else {
+      if (!isVisibile) {
+        //  video.style.border = "0";
+        video.load();
+        video.muted = true;
+        video.removeAttribute("autoplay");
+        // console.log(video, video.currentSrc);
+      }
     }
-  }, [isVisibile , isplaying]);
-
+  }, [isVisibile, isplaying]);
 
   // useEffect(() => {
   //   console.log(isVisibile);
@@ -78,7 +73,7 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
   //     if (!isplaying) {
   //       // video!.muted = false;
   //       video?.play();
-        
+
   //       setisplaying(true);
   //       video.muted = false;
   //       video.setAttribute("muted","false")
@@ -95,11 +90,11 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
   function togglePlay2(e: MouseEvent<HTMLVideoElement>) {
     const target = e.target as HTMLVideoElement;
     // console.log(target.play())
-    setisplaying((prev:any) => !prev);
+    setisplaying((prev: any) => !prev);
     // target.play();
     // target.muted = false;
     // if (isplaying === true) {
-    //   target.pause(); 
+    //   target.pause();
     //   target.muted = true;
 
     //   console.log(target)
@@ -129,15 +124,15 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
         className={styles.item}
         // controls
         onPlay={(e) => {
-          setisplaying(true)
+          setisplaying(true);
           console.log("playing true (onPlayEvent)");
           const target = e.target as HTMLVideoElement;
+          // target.removeAttribute('muted') // here
+          
           // target.play();
-          target.removeAttribute('muted')
+          // target.muted = false;
           // const target = e.target as HTMLVideoElement;
           // target.muted = false;
-          // setisplaying(true);
-          // setisplaying(true);
         }}
       >
         <source src={src} type="video/mp4" />
@@ -150,39 +145,32 @@ export default function Home() {
 
   function togglePlay(e: MouseEvent<HTMLVideoElement>) {
     const target = e.target as HTMLVideoElement;
-    // console.log(target.play())
     setisplaying((prev) => !prev);
     target.play();
     target.muted = false;
     if (isplaying === true) {
       target.pause();
       target.muted = true;
-      // console.log(isplaying)
-    }else{
+    } else {
       // target.play();
       // target.muted = false;
     }
   }
 
   useEffect(() => {
-    
-    
-      const videoElement = document.getElementsByTagName(
-        "video"
-      ) as HTMLCollectionOf<HTMLVideoElement>;
-      Array.from(videoElement).forEach((video) => {
-        if (isplaying === false && video.played) {
-          video.pause();
-          // console.log({ pause: video });
-        } else {
-          // console.log({else:video})
-          // video.play();
-        }
-      });
-    
-    
-  }, [isplaying])
-  
+    const videoElement = document.getElementsByTagName(
+      "video"
+    ) as HTMLCollectionOf<HTMLVideoElement>;
+    Array.from(videoElement).forEach((video) => {
+      if (isplaying === false && video.played) {
+        video.pause();
+        // console.log({ pause: video });
+      } else {
+        // console.log({else:video})
+        // video.play();
+      }
+    });
+  }, [isplaying]);
 
   // useEffect(() => {
 
