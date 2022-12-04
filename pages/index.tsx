@@ -128,9 +128,7 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
       <video
         ref={videoRef}
         muted={true}
-        playsInline 
-        // autoPlay
-        // autoPlay={true}
+        playsInline
         onClick={togglePlay2}
         loop={true}
         className={styles.item}

@@ -19,7 +19,14 @@ const useObserver = (options, targetRef) => {
         // currentTarget.muted = true;
         // if (!currentTarget) return;
         
-        if (currentTarget) observer?.observe(currentTarget)
+        if (currentTarget) {
+            currentTarget.load()
+            observer?.observe(currentTarget)
+        }
+        const playPromise = currentTarget.play()
+        if (playPromise != undefined){
+            playPromise.then().catch((err)=>{console.log("catch"+err)})
+        }
 
         return () => {
             if (currentTarget) observer?.unobserve(currentTarget)
