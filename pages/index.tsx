@@ -47,6 +47,10 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
         video.play();
         // setisplaying(true);    /// here
         video.muted = false;
+        if(!isplaying){
+          video.setAttribute('autoplay','true')
+        }
+        console.log(video.currentSrc);
         // video.style.border = "3px solid red"
 
         
