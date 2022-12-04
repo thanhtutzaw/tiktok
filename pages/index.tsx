@@ -129,7 +129,7 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
         ref={videoRef}
         muted={true}
         playsInline 
-        autoPlay
+        // autoPlay
         // autoPlay={true}
         onClick={togglePlay2}
         loop={true}
