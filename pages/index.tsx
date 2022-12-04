@@ -122,11 +122,13 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
         onClick={togglePlay2}
         loop={true}
         className={styles.item}
-        // controls
+        controls
         onPlay={(e) => {
           setisplaying(true);
           console.log("playing true (onPlayEvent)");
           const target = e.target as HTMLVideoElement;
+          target.muted = false;
+          target.removeAttribute('muted')
           // target.removeAttribute('muted') // here
           
           // target.play();
