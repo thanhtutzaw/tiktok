@@ -46,7 +46,7 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
       if (isplaying) {
         setisplaying(true)
         // video.muted = false;
-        video.setAttribute("autoplay", "true");
+        // video.setAttribute("autoplay", "true");   /// here
       }
       // console.log({ visible: video.currentSrc });
       // video.style.border = "3px solid red"
@@ -57,7 +57,7 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
         //  video.style.border = "0";
         video.load();
         video.muted = true;
-        video.removeAttribute("autoplay");
+        // video.removeAttribute("autoplay");   /// here
         // console.log(video, video.currentSrc);
       }
     }
@@ -128,8 +128,15 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
         playsInline
         onClick={togglePlay2}
         loop={true}
+        src={src}
         className={styles.item}
         // controls
+        onCanPlay={
+          (e)=>{
+            console.log({oncanplay:e.target})
+            const target = e.target as HTMLVideoElement;
+            target.muted = false;}
+        }
         onPlay={(e) => {
           // console.log("playing true (onPlayEvent)");
           const target = e.target as HTMLVideoElement;
@@ -143,7 +150,6 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
           // target.play();
         }}
       >
-        <source src={src} type="video/mp4" />
       </video>
     </div>
   );
