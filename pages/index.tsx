@@ -124,33 +124,32 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
       )}
       <video
         ref={videoRef}
-        muted={true}
+        // muted={true}
         playsInline
         onClick={togglePlay2}
         loop={true}
         src={src}
         className={styles.item}
         // controls
-        onCanPlay={
-          (e)=>{
-            console.log({oncanplay:e.target})
-            const target = e.target as HTMLVideoElement;
-            target.muted = false;}
-        }
+        // onCanPlay={
+        //   (e)=>{
+        //     console.log({oncanplay:e.target})
+        //     const target = e.target as HTMLVideoElement;
+        //     target.muted = false;}
+        // }
+        onStalled={() => console.log("loading")}
         onPlay={(e) => {
           // console.log("playing true (onPlayEvent)");
           const target = e.target as HTMLVideoElement;
-          setisplaying(true)
-          if(isplaying === true){
+          setisplaying(true);
+          if (isplaying === true) {
             target.muted = false;
           }
           // target.removeAttribute('muted')
 
-
           // target.play();
         }}
-      >
-      </video>
+      ></video>
     </div>
   );
 };
