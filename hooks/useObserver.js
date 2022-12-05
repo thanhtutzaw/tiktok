@@ -21,7 +21,7 @@ const useObserver = (options, targetRef) => {
         
         if (currentTarget) {
             observer?.observe(currentTarget)
-            console.log(currentTarget)
+            // console.log(currentTarget)
         }
         // const playPromise = currentTarget.play()
         // if (playPromise != undefined){

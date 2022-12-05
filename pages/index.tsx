@@ -17,7 +17,6 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
 
   const isVisibile = useObserver(options, videoRef);
   useEffect(() => {
-    // console.log(isVisibile);
     const video = videoRef?.current!;
     video.muted = true;
 
@@ -45,10 +44,11 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
       video.play();
       // setisplaying(true);    /// here
       if (isplaying) {
+        setisplaying(true)
         // video.muted = false;
         video.setAttribute("autoplay", "true");
       }
-      console.log({ visible: video.currentSrc });
+      // console.log({ visible: video.currentSrc });
       // video.style.border = "3px solid red"
 
       // }
@@ -89,8 +89,15 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
   // }, [isVisibile]);
   function togglePlay2(e: MouseEvent<HTMLVideoElement>) {
     const target = e.target as HTMLVideoElement;
-    // console.log(target.play())
     setisplaying((prev: any) => !prev);
+
+
+    // if (isplaying === true) {
+    //   target.pause();
+    //   target.muted = true;
+    // }
+    // target.play();
+
     // target.play();
     // target.muted = false;
     // if (isplaying === true) {
@@ -122,11 +129,12 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
         onClick={togglePlay2}
         loop={true}
         className={styles.item}
-        controls
+        // controls
         onPlay={(e) => {
-          setisplaying(true);
-          console.log("playing true (onPlayEvent)");
+          // setisplaying(true);
+          // console.log("playing true (onPlayEvent)");
           const target = e.target as HTMLVideoElement;
+          setisplaying(true)
           // target.muted = false;
           // target.removeAttribute('muted')
 
@@ -164,13 +172,17 @@ export default function Home() {
     const videoElement = document.getElementsByTagName(
       "video"
     ) as HTMLCollectionOf<HTMLVideoElement>;
+    console.log(isplaying)
     Array.from(videoElement).forEach((video) => {
-      if (isplaying !== false) {
+      if (isplaying === false) {
         video.pause();
+        // video.muted = true;
         // console.log({ pause: video });
-      } 
+      }
+        // video.play()
+      
         // console.log({else:video})
-        video.play();
+        
       
     });
   }, [isplaying]);
