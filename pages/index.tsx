@@ -171,6 +171,7 @@ export default function Home() {
     ) as HTMLCollectionOf<HTMLVideoElement>;
     console.log(isplaying)
     Array.from(videoElement).forEach((video) => {
+      video.load()
       if (isplaying === false) {
         video.pause();
         // video.muted = true;
