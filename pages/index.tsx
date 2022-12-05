@@ -131,19 +131,16 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
         className={styles.item}
         // controls
         onPlay={(e) => {
-          // setisplaying(true);
           // console.log("playing true (onPlayEvent)");
           const target = e.target as HTMLVideoElement;
           setisplaying(true)
-          // target.muted = false;
+          if(isplaying === true){
+            target.muted = false;
+          }
           // target.removeAttribute('muted')
 
-          // target.removeAttribute('muted') // here
-          
+
           // target.play();
-          // target.muted = false;
-          // const target = e.target as HTMLVideoElement;
-          // target.muted = false;
         }}
       >
         <source src={src} type="video/mp4" />
@@ -178,6 +175,9 @@ export default function Home() {
         video.pause();
         // video.muted = true;
         // console.log({ pause: video });
+      }
+      else{
+        video.muted = false;
       }
         // video.play()
       
