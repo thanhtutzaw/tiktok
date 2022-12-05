@@ -25,13 +25,16 @@
   align-items: center; */
 }
 
-.playState {
+.playState{
   position      : relative;
   color         : white;
   pointer-events: none;
   user-select: none;
   /* inset      :0; */
 }
+/* .loading{
+  text-align: center;
+} */
 
 .playIcon {
   filter: invert(100%) sepia(16%) saturate(7463%) hue-rotate(222deg) brightness(119%) contrast(115%);
