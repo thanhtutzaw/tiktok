@@ -23,6 +23,7 @@ const useObserver = (options, targetRef) => {
             observer?.observe(currentTarget)
             // console.log(currentTarget)
         }
+        
         // const playPromise = currentTarget.play()
         // if (playPromise != undefined){
             

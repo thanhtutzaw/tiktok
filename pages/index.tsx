@@ -143,13 +143,17 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
         onWaiting={(e: any) => {
           setloading((prev) => !prev);
         }}
-        onCanPlay={() => {
+        onCanPlay={(e) => {
+          const video = e.target as HTMLVideoElement;
+          if (video.videoHeight == 720) {
+            video.style.backgroundColor = "black";
+          }
           setloading(false);
         }}
         // onSuspend={()=>{
         //   console.log("loading")
         // }}
-
+        
         ref={videoRef}
         // muted={true}
         playsInline
@@ -206,14 +210,16 @@ export default function Home() {
     ) as HTMLCollectionOf<HTMLVideoElement>;
     // console.log(isplaying)
     Array.from(videoElement).forEach((video) => {
+      
       // const playPromise = video.play()
       // if(playPromise == undefined){
-      //   console.log("loading");
-      // }
-      if (isplaying === false) {
+        //   console.log("loading");
+        // }
+        if (isplaying === false) {
         video.pause();
         // video.muted = true;
         // console.log({ pause: video });
+        
       } else {
         video.muted = false;
       }
