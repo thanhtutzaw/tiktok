@@ -1,0 +1,130 @@
+.spinner {
+    position         : relative;
+    /* position      : absolute; */
+    left             : 50%;
+    top              : 50%;
+    width            : 64px;
+    margin-left      : -32px;
+    z-index          : 18;
+    pointer-events   : none;
+
+    color                      : #eee;
+    /* text-align              : left; */
+    /* direction               : ltr; */
+    /* font-size               : 11px;
+line-height                    : 1.3; */
+    -webkit-font-smoothing     : antialiased;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.spinnerCircle {
+    box-sizing   : border-box;
+    position     : absolute;
+    width        : 200%;
+    height       : 100%;
+    border-style : solid;
+    border-color : #ddd #ddd transparent;
+    border-radius: 50%;
+    border-width : 6px;
+}
+
+.spinnerContainer {
+    pointer-events      : none;
+    position            : absolute;
+    width               : 100%;
+    padding-bottom      : 100%;
+    top                 : 50%;
+    left                : 50%;
+    margin-top          : -50%;
+    margin-left         : -50%;
+    animation           : spinner-linspin 1568.2352941176ms linear infinite;
+    -webkit-animation   : spinner-linspin 1568.2352941176ms linear infinite;
+    /* -webkit-animation: spinner-linspin 1568.2352941176ms linear infinite; */
+}
+
+@keyframes spinner-linspin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+.spinnerRotator {
+    position         : absolute;
+    width            : 100%;
+    height           : 100%;
+    animation        : spinner-easespin 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+    -webkit-animation: spinner-easespin 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+}
+
+@keyframes spinner-easespin {
+    50% {
+        transform: rotate(540deg);
+    }
+
+    100% {
+        transform: rotate(1080deg);
+    }
+}
+
+.spinnerLeft .spinnerCircle {
+    left              : 0;
+    right             : -100%;
+    border-right-color: transparent;
+    animation         : spinner-left-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+    -webkit-animation : spinner-left-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+}
+
+.spinnerLeft {
+    right   : 59%;
+    position: absolute;
+    top     : 0;
+    left    : 0;
+    bottom  : 0;
+    overflow: hidden
+}
+
+.spinnerRight {
+    right   : 49%;
+    position: absolute;
+    top     : 0;
+    left    : 0;
+    bottom  : 0;
+    overflow: hidden;
+}
+
+@keyframes spinner-left-spin {
+    0% {
+        transform: rotate(130deg);
+    }
+
+    50% {
+        transform: rotate(-5deg);
+    }
+
+    100% {
+        transform: rotate(130deg);
+    }
+}
+
+.spinnerCircle .spinnerRight {
+    left             : -100%;
+    right            : 0;
+    border-left-color: transparent;
+    animation        : right-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+    -webkit-animation: right-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+}
+
+@keyframes right-spin {
+    0% {
+        transform: rotate(-130deg);
+    }
+
+    50% {
+        transform: rotate(5deg);
+    }
+
+    100% {
+        transform: rotate(-130deg);
+    }
+}

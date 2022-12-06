@@ -1,8 +1,8 @@
 import Head from "next/head";
 import { MouseEvent, useCallback, useEffect, useRef, useState } from "react";
 import styles from "../styles/Home.module.css";
-// import video from '../public/1.mp4'
 import useObserver from "../hooks/useObserver";
+import Spinner from "../components/Spinner/Spinner";
 
 const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
   let options;
@@ -16,7 +16,7 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const isVisibile = useObserver(options, videoRef);
-  const [loading, setloading] = useState(false)
+  const [loading, setloading] = useState(false);
   useEffect(() => {
     const video = videoRef?.current!;
     video.muted = true;
@@ -90,7 +90,14 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
   // }, [isVisibile]);
   function togglePlay2(e: MouseEvent<HTMLVideoElement>) {
     const target = e.target as HTMLVideoElement;
-    setisplaying((prev: any) => !prev);
+    if(!loading){
+      setisplaying((prev: any) => !prev);
+    }
+    // if(isplaying === false){
+    //   setloading(false)
+    // }else{
+    //   setloading(true)
+    // }
 
     // if (isplaying === true) {
     //   target.pause();
@@ -112,21 +119,19 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
   }
   return (
     <div className={styles.videoContainer}>
-      {isplaying ? null : (
-        <div className={styles.playState}>
-          <span>
-            <img
-              className={styles.playIcon}
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAAAxElEQVRIie3WMWpCURBG4Q8FSRrtbC2SPhvICmzchVuwtXQLbsE2pVUIkjqQHVgqNmIj6EvxGHhFQAIvcxt/OPVhhrlzh3sKZ4MvTLLFVYNPvJYQB294LiGucMYSw2xxcMQcj9niYIsputni4BvjEuJgjZcS4goXrDDKFgcnLDDIFgd7zNDLFgfvTUHnL23ISJuV7iS3Ooarn1VxkeeUvkDSV2b6J3FQT+pDW8Jb4vRD4Kqe1Kf/Ev4mTj32PhQ6b+9pPT+XHgysHrPM6QAAAABJRU5ErkJggg=="
-            />
-          </span>
-        </div>
-      )}
-      {loading && (
-        <div style={{textAlign:'center'}} className={styles.playState}>
-          <span>loading 😞</span>
-        </div>
-      )}
+      <div
+        style={{ display: isplaying ? "none" : "block" }}
+        className={styles.playState}
+      >
+        <span>
+          <img
+            className={styles.playIcon}
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAAAxElEQVRIie3WMWpCURBG4Q8FSRrtbC2SPhvICmzchVuwtXQLbsE2pVUIkjqQHVgqNmIj6EvxGHhFQAIvcxt/OPVhhrlzh3sKZ4MvTLLFVYNPvJYQB294LiGucMYSw2xxcMQcj9niYIsputni4BvjEuJgjZcS4goXrDDKFgcnLDDIFgd7zNDLFgfvTUHnL23ISJuV7iS3Ooarn1VxkeeUvkDSV2b6J3FQT+pDW8Jb4vRD4Kqe1Kf/Ev4mTj32PhQ6b+9pPT+XHgysHrPM6QAAAABJRU5ErkJggg=="
+          />
+        </span>
+      </div>
+
+      <Spinner loading={loading} isplaying={isplaying} />
 
       <video
         // onSuspend={(e: any) => {
@@ -138,14 +143,13 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
         onWaiting={(e: any) => {
           setloading((prev) => !prev);
         }}
-        onCanPlay={()=>{
+        onCanPlay={() => {
           setloading(false);
-
         }}
         // onSuspend={()=>{
         //   console.log("loading")
         // }}
-        
+
         ref={videoRef}
         // muted={true}
         playsInline
@@ -211,7 +215,6 @@ export default function Home() {
         // video.muted = true;
         // console.log({ pause: video });
       } else {
-        
         video.muted = false;
       }
       // video.play()
