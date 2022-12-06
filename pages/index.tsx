@@ -41,11 +41,11 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
 
     if (isVisibile) {
       // if (!isplaying) {
-
       video.play();
       // setisplaying(true);    /// here
       if (isplaying) {
         setisplaying(true);
+
         // video.muted = false;
         // video.setAttribute("autoplay", "true");   /// here
       }
@@ -54,6 +54,7 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
 
       // }
     } else {
+      
       if (!isVisibile) {
         //  video.style.border = "0";
         video.load();
@@ -90,6 +91,7 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
   // }, [isVisibile]);
   function togglePlay2(e: MouseEvent<HTMLVideoElement>) {
     const target = e.target as HTMLVideoElement;
+    // target.pause();
     if(!loading){
       setisplaying((prev: any) => !prev);
     }
@@ -146,14 +148,14 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
         onCanPlay={(e) => {
           const video = e.target as HTMLVideoElement;
           if (video.videoHeight == 720) {
-            video.style.backgroundColor = "black";
+            video.style.backgroundColor = "red";
           }
           setloading(false);
         }}
         // onSuspend={()=>{
         //   console.log("loading")
         // }}
-        
+
         ref={videoRef}
         // muted={true}
         playsInline
@@ -175,6 +177,7 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
           // if (target.readyState === 5) {
           //   console.log("loading")
           // }
+          
           setisplaying(true);
           if (isplaying === true) {
             target.muted = false;
@@ -193,11 +196,11 @@ export default function Home() {
   function togglePlay(e: MouseEvent<HTMLVideoElement>) {
     const target = e.target as HTMLVideoElement;
     setisplaying((prev) => !prev);
-    target.play();
-    target.muted = false;
+    // target.play();
+    // target.muted = false;
     if (isplaying === true) {
-      target.pause();
-      target.muted = true;
+      // target.pause();
+      // target.muted = true;
     } else {
       // target.play();
       // target.muted = false;
@@ -215,9 +218,10 @@ export default function Home() {
       // if(playPromise == undefined){
         //   console.log("loading");
         // }
-        if (isplaying === false) {
-        video.pause();
-        // video.muted = true;
+        if (!isplaying) {
+          video.pause();
+          // video.muted = true;
+
         // console.log({ pause: video });
         
       } else {
