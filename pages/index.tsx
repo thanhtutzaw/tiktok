@@ -148,7 +148,7 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
         onCanPlay={(e) => {
           const video = e.target as HTMLVideoElement;
           if (video.videoHeight == 720) {
-            video.style.backgroundColor = "red";
+            video.style.backgroundColor = "black";
           }
           setloading(false);
         }}
@@ -360,7 +360,7 @@ export default function Home() {
       <div className={styles.navBar}>
         <svg
           // width="500px"
-          height="100px"
+          height="90px"
           viewBox="0 -560 1920 1920"
           xmlns="http://www.w3.org/2000/svg"
         >
