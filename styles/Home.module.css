@@ -19,7 +19,13 @@
   align-items                : center;
   /* height                  : 100vh; */
 }
+.navBar{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+}
 .videoContainer {
   position: relative;
   /* display: flex;
@@ -114,6 +120,7 @@ box-shadow: 0px 0px 11px 0px rgb(0 0 0 / 8%);
   .main{
     height:86vh;
     border           : none;
+    /* user-select: none; */
     /* margin:0; */
     /* margin-bottom: 6.4rem; */
 
