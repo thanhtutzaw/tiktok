@@ -360,7 +360,7 @@ export default function Home() {
       <div className={styles.navBar}>
         <svg
           // width="500px"
-          height="90px"
+          height="60px"
           viewBox="0 -560 1920 1920"
           xmlns="http://www.w3.org/2000/svg"
         >
