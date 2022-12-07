@@ -40,8 +40,10 @@ const Video = ({ setisplaying, isplaying, src, togglePlay }: any) => {
     }
 
     if (isVisibile) {
+      console.log(video.currentSrc);
+      video.play()
       // if (!isplaying) {
-      video.play();
+      // video.play();
       // setisplaying(true);    /// here
       if (isplaying) {
         setisplaying(true);
